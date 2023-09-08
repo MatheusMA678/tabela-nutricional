@@ -1,20 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Poppins_400Regular, Poppins_600SemiBold, useFonts } from '@expo-google-fonts/poppins'
+import * as NavigationBar from 'expo-navigation-bar'
+
+import { Home } from './src/pages/Home';
+import { colors } from './src/theme/colors';
 
 export default function App() {
+  NavigationBar.setBackgroundColorAsync(colors.surface)
+  NavigationBar.setButtonStyleAsync('dark')
+
+  const [hasFonts] = useFonts({
+    poppins: Poppins_400Regular,
+    poppinsSemibold: Poppins_600SemiBold
+  })
+
+  if (!hasFonts) return
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <>
+      <Home />
+
       <StatusBar style="auto" />
-    </View>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

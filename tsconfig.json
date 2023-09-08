@@ -1,6 +1,8 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "target": "es2022",
+    "strict": true,
+    "strictNullChecks": true
   }
 }
